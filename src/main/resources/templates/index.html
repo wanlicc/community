@@ -30,7 +30,6 @@
                 <li th:if="${session.user==null}">
                     <a href="https://github.com/login/oauth/authorize?client_id=b5f31a8e48cad6403f29&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a>
                 </li>
-
                 <li class="dropdown" th:if="${session.user!=null}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
                     th:text="${session.user.getName()}"><span class="caret">我</span></a>
