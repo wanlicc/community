@@ -20,20 +20,20 @@ public class IndexController {
 
         Cookie[] cookies= request.getCookies();
 
-        if(ObjectUtils.isEmpty(cookies)){
-            throw new Exception("cookies为空");
-        }
-
-        for(Cookie cookie:cookies){
-            if(cookie.getName().equals("token")){
-                String token =cookie.getValue();
-                User user =userMapper.findByToken(token);
-                if(user !=null){
-                    request.getSession().setAttribute("user",user);
+        if(!ObjectUtils.isEmpty(cookies)){
+            for(Cookie cookie:cookies){
+                if(cookie.getName().equals("token")){
+                    String token =cookie.getValue();
+                    User user =userMapper.findByToken(token);
+                    if(user !=null){
+                        request.getSession().setAttribute("user",user);
+                    }
+                    break;
                 }
-                break;
             }
         }
+
+
         return "index";
     }
 }
